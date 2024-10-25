@@ -158,3 +158,9 @@ def edzes(edzes_tipus, tartam, cel):
     
     # Számítjuk a hátralévő időt a célig.
     teljesites = min(tartam, cel)
+    print(f"Ebből {teljesites} perc teljesítette a napi {cel} perces célt.")
+
+# A függvény meghívása különböző típusú edzésekkel, időtartamokkal és célokkal
+edzes("kardió", 30, 60)
+edzes("erősítés", 45, 40)
+edzes("jóga", 50, 50)
