@@ -128,4 +128,4 @@ Eredmény: `8`
 
 ---
 
-A függvények segítségével rugalmasabban, érthetőbben és hatékonyabban tudjuk kezelni a kódot, és a programokat sokkal könnyebben tudjuk fejleszteni. Remélem, így már könnyen követhető, hogyan működnek a függvények Pythonban!
+
