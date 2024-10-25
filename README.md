@@ -1,9 +1,5 @@
 # fuggvenyek
 
-### Függvények működése Pythonban: Nagyon érthető útmutató
-
-A függvények rendkívül hasznosak a programozásban, mert lehetővé teszik, hogy kódunkat kisebb, könnyebben kezelhető egységekre bontsuk. Egy függvény alapvetően egy kódrészlet, amely egy meghatározott feladatot hajt végre, és amit szükség esetén újra és újra használhatunk. Most nézzük meg lépésről lépésre, hogyan működnek a függvények Pythonban.
-
 #### Miért használjunk függvényeket?
 
 1. **Újrahasznosítható kód**: Ha egy feladatot többször kell végrehajtani a kódban, nem kell minden alkalommal újraírni a kódot. Elég létrehozni egy függvényt, majd meghívni azt.
