@@ -1,177 +1,131 @@
-# fuggvenyek
+## Függvények – Mi ez az egész?
 
-#### Miért használjunk függvényeket?
+A függvények egyfajta „eszközök” a programozásban, amikkel különféle feladatokat könnyen el lehet végezni. Gondolj rájuk úgy, mint kis „programdarabokra”, amiket bármikor használhatunk, ha ugyanazt a feladatot többször kell megoldanunk.
 
-1. **Újrahasznosítható kód**: Ha egy feladatot többször kell végrehajtani a kódban, nem kell minden alkalommal újraírni a kódot. Elég létrehozni egy függvényt, majd meghívni azt.
-2. **Olvashatóság és átláthatóság**: A függvények segítenek a programod tisztábbá tételében, mivel a kód részekre bontható, ami megkönnyíti az olvasást és a karbantartást.
-3. **Modularitás**: Könnyebb módosítani vagy hibát keresni egy kisebb függvényben, mint az egész programban egyszerre.
+### Miért hasznosak a függvények?
+A függvények segítségével:
+1. Rövidebbé tehetjük a kódunkat, mert nem kell ugyanazt újra és újra leírni.
+2. Logikusabbá, átláthatóbbá válik a program.
+3. Könnyebben tudjuk tesztelni és hibát keresni a kódban, mert kisebb, jól körülhatárolható részekkel dolgozunk.
 
-#### Hogyan működik egy függvény?
+### Függvény létrehozása és használata
+Egy függvény létrehozásához a `def` kulcsszót használjuk. Ezzel jelöljük, hogy most egy függvényt szeretnénk létrehozni. Utána megadunk neki egy nevet, hogy később is felismerjük. A függvény neve után zárójelben helyezkednek el az úgynevezett „paraméterek” (erről később lesz szó), majd egy kettőspontot teszünk a sor végére.
 
-Egy függvény Pythonban a következőképpen épül fel:
-
-1. **Definiálás**: Meghatározzuk a függvényt.
-2. **Meghívás**: A függvényt "meghívjuk" (azaz futtatjuk), amikor szükség van rá.
-
-##### 1. Függvény definiálása
-
-A függvények definiálása a `def` kulcsszóval történik, majd a függvény neve következik, és zárójelek közé írhatjuk a bemeneti paramétereket. Például:
+#### Alap Példa
+Nézzük meg a legeslegegyszerűbb függvényt, ami semmit nem csinál, csak kiírja, hogy „Helló!”:
 
 ```python
 def koszones():
-    print("Helló, üdvözöllek!")
+    print("Helló!")
 ```
 
-- **`def`**: Ezzel kezdünk minden függvényt.
-- **`koszones`**: Ez a függvény neve. Ezt fogjuk meghívni később.
-- **`print("Helló, üdvözöllek!")`**: Ez az a kódrészlet, amit a függvény végrehajt.
+#### Bontjuk szét, mi történik itt:
+1. `def`: Ezzel kezdjük a függvény létrehozását.
+2. `koszones`: Ez a függvény neve. Bármi lehet a neve, amit a későbbiekben meg szeretnénk hívni.
+3. `print("Helló!")`: Ez az a sor, ami lefut, amikor meghívjuk a függvényt. A `print` csak egy utasítás, ami megjeleníti a szöveget.
 
-##### 2. Függvény meghívása
-
-Most, hogy létrehoztuk a `koszones()` függvényt, meg is tudjuk hívni:
+Most, hogy megvan a függvényünk, bármikor hívhatjuk így:
 
 ```python
 koszones()
 ```
 
-Amikor meghívjuk a függvényt, a kimenet a következő lesz:
+Ha ezt lefuttatjuk, akkor megjelenik a szöveg: `Helló!`.
 
-```
-Helló, üdvözöllek!
-```
+---
 
-Ez ennyire egyszerű: létrehoztunk egy függvényt, ami egy adott feladatot hajt végre, majd meghívtuk.
+### Függvény paraméterekkel
 
-#### Függvények paraméterekkel
-
-A függvények feladata gyakran változhat attól függően, hogy milyen adatokat adunk nekik. Ezért létrehozhatunk olyan függvényeket, amelyek **paramétereket** fogadnak. Nézzünk egy példát, ahol a `koszones()` függvény most már egy nevet is fogad:
+A paraméterek azok a dolgok, amiket a függvény "felhasználhat" a működéséhez. Gondolj rá úgy, mint egy csavarkulcsra: a kulcs működik minden csavarra, de a különböző méretekhez paraméterek kellenek. Például, ha azt szeretnénk, hogy a `koszones` függvény valakinek név szerint köszönjön, akkor ezt így oldhatjuk meg:
 
 ```python
 def koszones(nev):
-    print(f"Hello, {nev}!")
+    print("Helló, " + nev + "!")
 ```
 
-Most már egy nevet is átadhatunk a függvénynek:
+Most létrehoztunk egy `nev` nevű paramétert. Amikor meghívjuk a függvényt, ezt a paramétert ki kell töltenünk:
 
 ```python
 koszones("Anna")
-koszones("Péter")
 ```
 
-A kimenet:
+A végeredmény ez lesz: `Helló, Anna!`
 
-```
-Hello, Anna!
-Hello, Péter!
-```
+#### Mi történt itt?
+Amikor meghívtuk a `koszones("Anna")` függvényt, a Python tudta, hogy a `nev` értéke most „Anna”, így azt helyettesítette be a `print` utasításban. Ezt hívják "argumentumnak" is – így nevezzük azokat az értékeket, amiket a függvény hívásakor adunk meg.
 
-##### Hogyan működik?
+---
 
-- A **`nev`** paraméter egy változó, ami a függvény belsejében kap értéket. A függvény most nem csak egy általános üdvözlést ír ki, hanem személyre szabottan üdvözöl mindenkit a megadott név alapján.
+### Több paraméter használata
 
-#### Visszatérési érték (return)
-
-A függvények nemcsak végrehajtanak valamit, hanem vissza is adhatnak egy értéket, amelyet máshol a kódban használhatunk. Ehhez a **`return`** kulcsszót használjuk. Például egy függvény, amely két szám összegét adja vissza:
+Ha több információt szeretnénk átadni a függvénynek, azt is megtehetjük. Például egy `bemutatkozas` függvényt, amely név mellett kort is megjelenít:
 
 ```python
-def osszead(a, b):
+def bemutatkozas(nev, kor):
+    print("Helló, " + nev + "! Te " + str(kor) + " éves vagy.")
+```
+
+Most két paramétert adtunk meg: `nev` és `kor`. Amikor meghívjuk a függvényt, mindkét értéket meg kell adnunk:
+
+```python
+bemutatkozas("Anna", 25)
+```
+
+A végeredmény: `Helló, Anna! Te 25 éves vagy.`
+
+---
+
+### Függvény, ami visszatér egy értékkel
+
+Néha szükség lehet arra, hogy a függvény ne csak valamit megjelenítsen, hanem egy konkrét értéket adjon vissza. Ehhez a `return` kulcsszót használjuk.
+
+Tegyük fel, hogy szeretnénk egy függvényt, ami két számot összead, és az eredményt visszaadja:
+
+```python
+def osszeadas(a, b):
     return a + b
 ```
 
-A függvény meghívása:
+A `return` utasítás itt az `a + b` értékét adja vissza. Ez azt jelenti, hogy amikor meghívjuk ezt a függvényt, kapunk egy konkrét eredményt:
 
 ```python
-eredmeny = osszead(5, 3)
+eredmeny = osszeadas(5, 3)
 print(eredmeny)
 ```
 
-Kimenet:
+Ez megjeleníti a `8`-at, mert az `osszeadas(5, 3)` értéke `8`.
 
-```
-8
-```
+#### Mi történik itt?
+Amikor meghívjuk az `osszeadas(5, 3)` függvényt, az `a` értéke `5`, a `b` értéke `3`, és a függvény ezt a két számot összeadja. A `return` miatt a függvény visszaadja ezt az eredményt, amit a `eredmeny` nevű változóba mentettünk, és így ki tudjuk írni az eredményt a `print` segítségével.
 
-##### Hogyan működik?
+---
 
-- **`return a + b`**: Ez a sor visszaadja az `a` és `b` összeadásának eredményét. A függvény visszatérési értékét elmenthetjük egy változóba (például `eredmeny`), majd felhasználhatjuk a programban.
+### Függvények összefoglalása
 
-#### Alapértelmezett értékek
+1. **Létrehozás**: A függvényeket a `def` kulcsszóval hozzuk létre, és egy nevet adunk nekik.
+2. **Meghívás**: A függvény nevét beírva hívjuk meg őket, zárójelek között megadva a szükséges paramétereket.
+3. **Paraméterek**: Lehetőségünk van értékeket átadni a függvénynek, hogy azokkal dolgozzon.
+4. **Return**: Ha azt szeretnénk, hogy a függvény eredményt adjon vissza, a `return` utasítással adjuk meg az eredményt.
 
-Néha olyan függvényeket szeretnénk, amelyeknek van alapértelmezett értéke, ha a felhasználó nem ad meg egy paramétert. Például:
+---
 
-```python
-def koszones(nev="Vendég"):
-    print(f"Hello, {nev}!")
-```
+### Gyakorlat: Függvény létrehozása és hívása
 
-Most ha nem adunk meg nevet, a függvény automatikusan a "Vendég" szót fogja használni:
+1. Készíts egy `ketszeres` nevű függvényt, amely egy számot fogad, és visszaadja annak kétszeresét.
+2. Hívd meg a függvényt egy számmal, és írd ki az eredményt.
 
-```python
-koszones()       # Alapértelmezett értékkel hívjuk meg
-koszones("Ákos") # Átadjuk a nevet
-```
-
-Kimenet:
-
-```
-Hello, Vendég!
-Hello, Ákos!
-```
-
-#### Függvények több visszatérési értékkel
-
-Egy függvény egyszerre több értéket is vissza tud adni, például egy négyzet és egy köb kiszámításánál:
+#### Megoldás
 
 ```python
-def hatvanyok(szam):
-    negyzet = szam ** 2
-    kob = szam ** 3
-    return negyzet, kob
+def ketszeres(szam):
+    return szam * 2
+
+eredmeny = ketszeres(4)
+print(eredmeny)
 ```
 
-A függvény meghívása:
+Eredmény: `8`
 
-```python
-n, k = hatvanyok(3)
-print(f"Négyzet: {n}, Köb: {k}")
-```
+---
 
-Kimenet:
-
-```
-Négyzet: 9, Köb: 27
-```
-
-##### Hogyan működik?
-
-- A függvény két értéket ad vissza: a négyzetet és a köböt. A visszatérési értékeket külön változókba menthetjük.
-
-#### Összefoglalás
-
-A függvények az alábbiak szerint működnek Pythonban:
-1. **Definiáljuk a függvényt** a `def` kulcsszóval.
-2. **Meghívjuk a függvényt** a nevével és zárójelben a paramétereivel.
-3. A függvények fogadhatnak **paramétereket**, amiket a zárójelekben adunk meg.
-4. A függvények **visszaadhatnak** értéket a `return` kulcsszó segítségével.
-5. Paraméterekhez adhatunk **alapértelmezett értékeket**, ha a függvényt paraméterek nélkül hívjuk meg.
-
-#### Példa feladat
-
-Íme egy egyszerű feladat, hogy gyakorold a függvények használatát. Írj egy függvényt, ami visszaadja egy szám négyzetét!
-
-```python
-def negyzet(szam):
-    return szam ** 2
-
-# Teszteljük a függvényt
-eredmeny = negyzet(4)
-print(f"A szám négyzete: {eredmeny}")
-```
-
-Kimenet:
-
-```
-A szám négyzete: 16
-```
-
-Most már tisztán látod, hogyan működnek a függvények Pythonban! További gyakorlatként próbáld ki, hogy írsz olyan függvényeket, amelyek több műveletet végeznek, és különböző paraméterekkel dolgoznak!
+A függvények segítségével rugalmasabban, érthetőbben és hatékonyabban tudjuk kezelni a kódot, és a programokat sokkal könnyebben tudjuk fejleszteni. Remélem, így már könnyen követhető, hogyan működnek a függvények Pythonban!
