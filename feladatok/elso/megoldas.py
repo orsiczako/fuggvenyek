@@ -1,32 +1,31 @@
-
 def menu():
-    # Ez a függvény megkérdezi a felhasználót, mit szeretne rendelni.
+    # Kezdetben valasz üres értéket kap, hogy a while ciklus tudjon elindulni.
+    valasz = ""
     
-    while True:  # Végtelen ciklus, ami addig tart, amíg a felhasználó a "kilépés" szót nem adja meg.
+    while valasz != "kilépés":  
+        # A ciklus addig fut, amíg a felhasználó nem írja be, hogy "kilépés".
         valasz = input('Mit szeretnél rendelni? (kilépés - kilépés)\n')
-        # Kérjük a felhasználót, hogy válasszon a megadott lehetőségek közül.
+        # Megkérdezzük a felhasználót, hogy mit szeretne rendelni.
 
-        if valasz == 'kilépés':  
-            # Ha a felhasználó beírja a "kilépés" szót, a program befejeződik.
-            print('Kilépés a programból...')
-            break  # Kilépünk a while ciklusból, ezzel véget ér a program.
-
-        elif valasz == 'leves':  
-            # Ha a felhasználó a "leves" szót írja be, megjelenik egy üzenet a levesről.
+        if valasz == 'leves':  
+            # Ha a felhasználó "leves"-t ír be, kiírjuk ezt az üzenetet.
             print('A leves a konyhán készül.')
 
         elif valasz == 'főétel':  
-            # Ha a felhasználó a "főétel" szót választja, megjelenik egy üzenet a főételről.
+            # Ha "főétel"-t választ, kiírjuk az üzenetet a főételről.
             print('A főétel a séf specialitása.')
 
         elif valasz == 'desszert':  
-            # Ha a felhasználó a "desszert" szót írja be, megjelenik egy üzenet a desszertről.
+            # Ha "desszert"-et választ, kiírjuk az üzenetet a desszertről.
             print('A desszert a cukrászdában készül.')
 
-        else:  
-            # Ha a felhasználó olyan választ ad, ami nem szerepel a lehetőségek között:
+        elif valasz != "kilépés":
+            # Ha valami más szöveget ír be, mint a lehetséges választások, hibaüzenet jelenik meg.
             print('Érvénytelen választás, kérlek válassz újra!')
-            # Tájékoztató üzenet, hogy a választás érvénytelen volt.
             
+    print('Kilépés a programból...')
+    # A ciklus véget ért, ezért megjelenik a kilépési üzenet.
+    
 # A menü indítása
 menu()
+
